@@ -23,4 +23,7 @@
 hs_err_pid*
 
 # Eclipse
-.settings/
+.idea/
+
+sshgit
+sshgit.pub

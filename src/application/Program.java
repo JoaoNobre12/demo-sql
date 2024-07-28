@@ -5,7 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import db.DB;
+import db.DbException;
 import db.DbIntegrityException;
+import model.entities.Seller;
+import model.entities.dao.DaoFactory;
+import model.entities.dao.SellerDao;
+
+import javax.swing.*;
 
 public class Program {
 
@@ -15,21 +21,16 @@ public class Program {
 		PreparedStatement st = null;
 		try {
 			conn = DB.getConnection();
-	
-			st = conn.prepareStatement(
-					"DELETE FROM department "
-					+ "WHERE "
-					+ "Id = ?");
 
-			st.setInt(1, 5);
-			
-			int rowsAffected = st.executeUpdate();
-			
-			System.out.println("Done! Rows affected: " + rowsAffected);
+			SellerDao sellerDao = DaoFactory.createSellerDao();
+
+			Seller seller = sellerDao.findById(7);
+
+			System.out.println(seller);
 		}
-		catch (SQLException e) {
-			throw new DbIntegrityException(e.getMessage());
-		} 
+		catch (Exception e){
+			throw new DbException(e.getMessage());
+		}
 		finally {
 			DB.closeStatement(st);
 			DB.closeConnection();
