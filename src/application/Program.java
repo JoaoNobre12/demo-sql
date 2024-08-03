@@ -29,7 +29,15 @@ public class Program {
 
 			System.out.println("\n\n\nteste INSERT");
 
-			sellerDao.insert(new Seller(1,"Joao","joao@joao.com",new Date(),1597.00,new Department(1,null)));
+			//sellerDao.insert(new Seller(1,"Joao","joao@joao.com",new Date(),1597.00,new Department(1,null)));
+
+			System.out.println("\n\n\nteste UPDATE");
+
+			//sellerDao.insert(new Seller(1,"Joao2","joao2@joao.com",new Date(),1597.00,new Department(2,null)));
+			sellerDao.update(new Seller(17,"Vito3","vitor@joao.com",new Date(),2597.00,new Department(3,null)));
+
+			System.out.println("\n\n\nTeste delete");
+			sellerDao.deleteById(17);
 
 			System.out.println("find by id");
 			Seller seller = sellerDao.findById(7);
