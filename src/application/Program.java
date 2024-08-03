@@ -26,15 +26,23 @@ public class Program {
 
 			SellerDao sellerDao = DaoFactory.createSellerDao();
 
+			System.out.println("find by id");
 			Seller seller = sellerDao.findById(7);
 
 			System.out.println(seller);
 
-			System.out.println("teste by department\n\n\n");
+			System.out.println("\n\n\nteste by department");
 
 			List<Seller> sellerList = sellerDao.findByDepartment(new Department(2, null));
 
-			System.out.println(sellerList);
+			sellerList.forEach(System.out::println);
+
+			System.out.println("\n\n\nteste by all");
+
+			List<Seller> sellerList2 = sellerDao.findAll();
+
+			sellerList2.forEach(System.out::println);
+
 		}
 		catch (Exception e){
 			throw new DbException(e.getMessage());
