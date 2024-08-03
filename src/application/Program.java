@@ -3,6 +3,7 @@ package application;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import db.DB;
@@ -25,6 +26,10 @@ public class Program {
 			conn = DB.getConnection();
 
 			SellerDao sellerDao = DaoFactory.createSellerDao();
+
+			System.out.println("\n\n\nteste INSERT");
+
+			sellerDao.insert(new Seller(1,"Joao","joao@joao.com",new Date(),1597.00,new Department(1,null)));
 
 			System.out.println("find by id");
 			Seller seller = sellerDao.findById(7);
